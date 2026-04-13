@@ -1,0 +1,7 @@
+{
+  "name": "Guèye et Frères Fer Forge",
+  "description": "Menuiserie métallique, aluminium et inox de haute qualité. La qualité et le Joli Design.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

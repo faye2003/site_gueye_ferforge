@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Service": {
+      "title": "Service",
+      "description": "A service offered by the company",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "prestations": { "type": "array", "items": { "type": "string" } },
+        "image": { "type": "string" },
+        "gallery": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "inactive"] }
+      },
+      "required": ["title", "description", "image"]
+    },
+    "Realization": {
+      "title": "Realization",
+      "description": "A project realization",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "location": { "type": "string" },
+        "date": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "inactive"] }
+      },
+      "required": ["title", "category", "images"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A contact message from a user",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "service": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "message"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "A category for realizations",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Global app settings",
+      "type": "object",
+      "properties": {
+        "whatsappNumber": { "type": "string" },
+        "whatsappText": { "type": "string" },
+        "whatsappPosition": { "type": "string", "enum": ["left", "right"] },
+        "whatsappActive": { "type": "boolean" }
+      }
+    }
+  },
+  "firestore": {
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Collection of services"
+    },
+    "/realizations/{realizationId}": {
+      "schema": "Realization",
+      "description": "Collection of realizations"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Collection of contact messages"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Collection of realization categories"
+    },
+    "/settings/global": {
+      "schema": "Settings",
+      "description": "Global settings document"
+    }
+  }
+}
